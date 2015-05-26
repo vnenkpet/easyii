@@ -10,27 +10,19 @@ $this->title = Yii::t('easyii/text', 'Texts');
     <table class="table table-hover">
         <thead>
             <tr>
-                <?php if(IS_ROOT) : ?>
-                    <th width="30">#</th>
-                <?php endif; ?>
+                <th width="30">#</th>
                 <th><?= Yii::t('easyii', 'Text') ?></th>
-                <?php if(IS_ROOT) : ?>
-                    <th><?= Yii::t('easyii', 'Slug') ?></th>
-                    <th width="30"></th>
-                <?php endif; ?>
+                <th><?= Yii::t('easyii', 'Slug') ?></th>
+                <th width="30"></th>
             </tr>
         </thead>
         <tbody>
     <?php foreach($data->models as $item) : ?>
             <tr>
-                <?php if(IS_ROOT) : ?>
                 <td><?= $item->primaryKey ?></td>
-                <?php endif; ?>
                 <td><a href="<?= Url::to(['/admin/text/a/edit', 'id' => $item->primaryKey]) ?>"><?= $item->text ?></a></td>
-                <?php if(IS_ROOT) : ?>
-                    <td><?= $item->slug ?></td>
-                    <td><a href="<?= Url::to(['/admin/text/a/delete', 'id' => $item->primaryKey]) ?>" class="glyphicon glyphicon-remove confirm-delete" title="<?= Yii::t('easyii', 'Delete item') ?>"></a></td>
-                <?php endif; ?>
+                <td><?= $item->slug ?></td>
+                <td><a href="<?= Url::to(['/admin/text/a/delete', 'id' => $item->primaryKey]) ?>" class="glyphicon glyphicon-remove confirm-delete" title="<?= Yii::t('easyii', 'Delete item') ?>"></a></td>
             </tr>
     <?php endforeach; ?>
         </tbody>

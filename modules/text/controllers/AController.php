@@ -10,7 +10,7 @@ use yii\easyii\modules\text\models\Text;
 
 class AController extends Controller
 {
-    public $rootActions = ['create', 'delete'];
+    public $rootActions = ['delete'];
 
     public function actionIndex()
     {
