@@ -1,12 +1,16 @@
 <?php
 namespace yii\easyii\modules\carousel\models;
 
+use webvimark\behaviors\multilanguage\MultiLanguageBehavior;
+use webvimark\behaviors\multilanguage\MultiLanguageTrait;
 use Yii;
 use yii\easyii\behaviors\CacheFlush;
 use yii\easyii\behaviors\SortableModel;
 
 class Carousel extends \yii\easyii\components\ActiveRecord
 {
+    use MultiLanguageTrait;
+
     const STATUS_OFF = 0;
     const STATUS_ON = 1;
     const CACHE_KEY = 'easyii_carousel';
@@ -37,7 +41,18 @@ class Carousel extends \yii\easyii\components\ActiveRecord
     {
         return [
             CacheFlush::className(),
-            SortableModel::className()
+            SortableModel::className(),
+            'mlBehavior'=>[
+                'class'    => MultiLanguageBehavior::className(),
+                'mlConfig' => [
+                    'db_table'         => 'translations_with_string',
+                    'attributes'       => ['title', 'text'],
+                    'admin_routes'     => [
+                        'admin/carousel/a/edit',
+                        'admin/carousel/a/create'
+                    ],
+                ],
+            ]
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+use webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
@@ -11,10 +12,10 @@ use yii\widgets\ActiveForm;
 <?php endif; ?>
 <?= $form->field($model, 'image')->fileInput() ?>
 <?php if($this->context->module->settings['enableTitle']) : ?>
-    <?= $form->field($model, 'title')->textarea() ?>
+    <?= $form->field($model, 'title')->textarea()->widget(MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
 <?php endif; ?>
 <?php if($this->context->module->settings['enableText']) : ?>
-    <?= $form->field($model, 'text')->textarea() ?>
+    <?= $form->field($model, 'text')->textarea()->widget(MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
 <?php endif; ?>
 <?= Html::submitButton(Yii::t('easyii', 'Save'), ['class' => 'btn btn-primary']) ?>
 <?php ActiveForm::end(); ?>
