@@ -2,6 +2,7 @@
 namespace yii\easyii\components;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * Base API class
@@ -29,9 +30,18 @@ class API extends \yii\base\Object
         return call_user_func_array([self::$classes[$name], 'api_' . $method], $params);
     }
 
-    public function wrapLiveEdit($text, $path, $tag = 'span')
+    /**
+     * Wraps element into a live edit div
+     *
+     * @param $text
+     * @param $path
+     * @param string $tag
+     * @param null $pk
+     * @return string
+     */
+    public function wrapLiveEdit($text, $path, $tag = 'span', $pk = null)
     {
-        return '<'.$tag.' class="easyiicms-edit" data-edit="'. Yii::$app->urlManager->createAbsoluteUrl(["/admin/$this->module/$path"]) . '">'.$text.'</'.$tag.'>';
+        return '<'.$tag.' class="easyiicms-edit" data-edit="'. Url::to(["/admin/$this->module/$path"]) . '">'.$text.'</'.$tag.'>';
     }
 
     public function  errorText($text)

@@ -1,5 +1,7 @@
 <?php
 
+use webvimark\behaviors\multilanguage\MultiLanguageUrlManager;
+
 return [
     'modules' => [
         'admin' => [
@@ -14,7 +16,7 @@ return [
                 'admin/<controller:\w+>/<action:[\w-]+>/<id:\d+>' => 'admin/<controller>/<action>',
                 'admin/<module:\w+>/<controller:\w+>/<action:[\w-]+>/<id:\d+>' => 'admin/<module>/<controller>/<action>'
             ],
-         ],
+        ],
         'user' => [
             'identityClass' => 'yii\easyii\models\Admin',
             'enableAutoLogin' => true,
